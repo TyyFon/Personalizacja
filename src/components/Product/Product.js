@@ -1,7 +1,6 @@
 import styles from './Product.module.scss';
 import clsx from 'clsx';
 import Button from '../Button/Button';
-//import Products from '../Products/Products';
 import { useState } from 'react'
 
 
@@ -9,15 +8,18 @@ const Product = ({ title, basePrice, colors, sizes, name }) => {
   const [currentColor, setCurrentColor] = useState(colors[0])
   const [currentSize, setCurrentSize] = useState(sizes[0])
 
-   //console.log('currentSize:', currentSize)
-   //console.log('sizes.name:' , currentSize.size)
-  
-
+ 
   const colorClass = (color) => {
     return styles[
       'color' + color[0].toUpperCase() + color.substr(1).toLowerCase()
     ];
   }
+  
+  const getPrice = () => {
+     return (
+       basePrice + currentSize.additionalPrice
+     );
+   };
    
     
   return (
@@ -31,7 +33,7 @@ const Product = ({ title, basePrice, colors, sizes, name }) => {
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
-          <span className={styles.price}>Price: {basePrice}$</span>
+          <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
@@ -42,16 +44,12 @@ const Product = ({ title, basePrice, colors, sizes, name }) => {
                   <button
                     type='button'
                     className={clsx(sizes.name === currentSize && styles.active)}
-                    onClick={() => setCurrentSize(sizes.name)}
+                    onClick={() => setCurrentSize(sizes)}
                   >
                     {sizes.name}
                   </button>
                 </li>
               ))}
-              {/* <li><button type="button" className={styles.active}>S</button></li>
-              <li><button type="button">M</button></li>
-              <li><button type="button">L</button></li>
-              <li><button type="button">XL</button></li> */}
             </ul>
           </div>
           <div className={styles.colors}>
