@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Button from '../Button/Button';
 import ProductImage from '../ProductImage/ProductImage';
 import { useState } from 'react'
+import ProductForm from '../ProductForm/ProductForm'
 
 
 const Product = ({ title, basePrice, colors, sizes, name }) => {
@@ -12,11 +13,11 @@ const Product = ({ title, basePrice, colors, sizes, name }) => {
   
    
  
-  const colorClass = (color) => {
-    return styles[
-      'color' + color[0].toUpperCase() + color.substr(1).toLowerCase()
-    ];
-  }
+  // const colorClass = (color) => {
+  //   return styles[
+  //     'color' + color[0].toUpperCase() + color.substr(1).toLowerCase()
+  //   ];
+  // }
   
   const getPrice = () => {
     return (
@@ -34,7 +35,8 @@ const Product = ({ title, basePrice, colors, sizes, name }) => {
           <h2 className={styles.name}>{title}</h2>
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
-        <form>
+        <ProductForm sizes={sizes} colors={colors} setCurrentColor={setCurrentColor} setCurrentSize={setCurrentSize} currentSize = {currentSize} currentColor = {currentColor}/>
+        {/* <form>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
@@ -68,7 +70,7 @@ const Product = ({ title, basePrice, colors, sizes, name }) => {
           <Button className={styles.button}>
             <span className="fa fa-shopping-cart" />
           </Button>
-        </form>
+        </form> */}
       </div>
     </article>
   )

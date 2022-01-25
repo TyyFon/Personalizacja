@@ -1,15 +1,9 @@
 import styles from '../Product/Product.module.scss';
-import { useState } from 'react';
 import clsx from 'clsx';
 
-const OptiontSize = (sizes , basePrice) => {
-    const [currentSize, setCurrentSize] = useState(sizes[0])
-
-    const getPrice = () => {
-        return (
-          basePrice + currentSize.additionalPrice
-        );
-    };
+const OptiontSize = (sizes , currentSize , setCurrentSize) => {
+    //console.log(sizes)
+   
 return (
 
     <div className={styles.sizes}>
@@ -28,6 +22,7 @@ return (
               ))}
             </ul>
           </div>
-)}
+)
+}
 
 export default OptiontSize
