@@ -5,17 +5,26 @@ import PropTypes from 'prop-types';
 
 const Products = () => {
   const [products]  = useState(productsData);
-    
-  return (
+  return (  
     <section>
-      {products.map(product => <Product key={product.id} name={product.name} title={product.title} colors={product.colors} sizes={product.sizes} basePrice={product.basePrice} />)}
+      {products.map(product => {
+        return (
+          <Product 
+            key={product.id} 
+            name={product.name} 
+            title={product.title} 
+            colors={product.colors} 
+            sizes={product.sizes} 
+            basePrice={product.basePrice} 
+          />
+        )
+      })}
     </section>
   );
- };
+};
 
 Products.protoTypes = {
 productsData: PropTypes.array.isRequired
-
 }
 
 
