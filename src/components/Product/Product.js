@@ -1,6 +1,7 @@
 import styles from './Product.module.scss';
 import ProductImage from '../ProductImage/ProductImage'
 import { useState } from 'react'
+import { useMemo } from 'react'
 import ProductForm from '../ProductForm/ProductForm'
 
 
@@ -9,11 +10,11 @@ const Product = ({ title, basePrice, colors, sizes, name }) => {
   const [currentColor, setCurrentColor] = useState(colors[0])
   const [currentSize, setCurrentSize] = useState(sizes[0])
   
-  const getPrice = () => {
+  const getPrice = useMemo(() => {
     return (
-        basePrice + currentSize.additionalPrice
+        currentSize.additionalPrice + basePrice
       );
-    };
+    }, [currentSize]);
       
   return (
     <article className={styles.product}>
