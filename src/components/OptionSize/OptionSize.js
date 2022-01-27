@@ -1,7 +1,7 @@
 import styles from '../Product/Product.module.scss';
 import clsx from 'clsx';
 
-const OptiontSize = ({sizes , currentSize , setCurrentSize}) => {
+const OptionSize = ({sizes , currentSize , setCurrentSize}) => {
     return (
     <div className={styles.sizes}>
       <h3 className={styles.optionLabel}>Sizes</h3>
@@ -24,4 +24,4 @@ const OptiontSize = ({sizes , currentSize , setCurrentSize}) => {
 )
 };
 
-export default OptiontSize
+export default OptionSize
